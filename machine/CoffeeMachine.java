@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class CoffeeMachine {
-    public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException {
         Coffee coffee=new Coffee();
         Scanner scanner=new Scanner(System.in);
         for(;;) {
@@ -15,8 +15,13 @@ public class CoffeeMachine {
             if(Objects.equals(s,"exit")){
                 return;
             }
-            Method method = coffee.getClass().getMethod(s);
-            method.invoke(coffee);
+            try {
+                Method method = coffee.getClass().getMethod(s);
+                method.invoke(coffee);
+            }
+            catch (NoSuchMethodException e){
+                System.out.println("Error in input, please re-enter");
+            }
         }
     }
 }

@@ -48,7 +48,7 @@ public class Coffee {
     }
 
     public void buy(){
-        System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino: ");
+        System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino,back - to main menu:");
         Scanner scanner=new Scanner(System.in);
         String flag=scanner.next();
         if(Objects.equals(flag,"back"))
@@ -66,19 +66,22 @@ public class Coffee {
                 this.cokeCappuccino();
                 break;
             }
+            default:{
+                System.out.println("Sorry,There is no coffee of this type");
+            }
         }
         System.out.println();
     }
     public void fill(){
         Scanner scanner=new Scanner(System.in);
         System.out.println("Write how many ml of water you want to add: ");
-        water += scanner.nextInt();
+        water += InputUtil.InputInt();
         System.out.println("Write how many ml of milk you want to add: ");
-        milk += scanner.nextInt();
+        milk += InputUtil.InputInt();
         System.out.println("Write how many grams of coffee beans you want to add: ");
-        coffeeBeans += scanner.nextInt();
+        coffeeBeans += InputUtil.InputInt();
         System.out.println("Write how many disposable cups of coffee you want to add: ");
-        disposableCups += scanner.nextInt();
+        disposableCups += InputUtil.InputInt();
         System.out.println();
     }
 
